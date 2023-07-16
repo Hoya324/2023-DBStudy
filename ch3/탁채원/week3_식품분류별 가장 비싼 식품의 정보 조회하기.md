@@ -46,12 +46,29 @@ SQL을 실행하면 다음과 같이 출력되어야 합니다.
 
 ---
 
-## 코드
+## 틀린 코드
 
 ```sql
 SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE, PRODUCT_NAME
 FROM FOOD_PRODUCT
 WHERE CATEGORY IN ('과자', '국', '김치', '식용유')
 GROUP BY CATEGORY
+ORDER BY MAX_PRICE DESC;
+
+# 이 코드를 실행하면, 각 식품분류별로 최대 가격을 가져오지 않고, 해당 식품분류의 모든 항목 중 하나를 가져오는 오류가 발생한다.
+# 따라서 서브쿼리를 사용해서 각 식품분류별 최대 가격을 먼저 구하고, 이를 기준으로 다시 원래의 테이블과 조인해야 한다. 
+```
+
+## 수정한 코드
+```sql
+SELECT FP.CATEGORY, FP.PRICE AS MAX_PRICE, FP.PRODUCT_NAME
+FROM FOOD_PRODUCT FP
+JOIN (
+    SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE
+    FROM FOOD_PRODUCT
+    WHERE CATEGORY IN ('과자', '국', '김치', '식용유')
+    GROUP BY CATEGORY
+) MAX_PRICES
+ON FP.CATEGORY = MAX_PRICES.CATEGORY AND FP.PRICE = MAX_PRICES.MAX_PRICE
 ORDER BY MAX_PRICE DESC;
 ```
