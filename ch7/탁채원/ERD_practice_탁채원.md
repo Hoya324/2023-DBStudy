@@ -54,8 +54,7 @@
 ## ER 모델 구현
 
 - 이곳에 본인이 구현한 ER의 이미지를 첨부해주세요.
-
-![Untitled](ERD_practice_%E1%84%90%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AB%201bf69580f282482f8921186d75ea0502/Untitled.png)
+<img width="919" alt="ERD_practice_탁채원" src="https://github.com/noweahct/2023-DBStudy/assets/128283286/c0b3d9c9-564f-486e-85a8-ddf52b2c82c9">
 
 ### 참고 자료
 
